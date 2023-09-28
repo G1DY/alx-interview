@@ -5,7 +5,8 @@ The function should return an empty list if n <= 0
 ---
 
 ## Definition
-Pascal’s triangle is a pattern of the triangle which is based on nCr, below is the pictorial representation of Pascal’s triangle.
+Pascal’s triangle is a pattern of the triangle which is based on nCr.
 
-## Pictorial Representation when n = 5
+## Pictorial Representation
 
+![image](Screenshot%25from%252023-09-28%2512-43-51.png)
