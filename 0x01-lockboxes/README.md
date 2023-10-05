@@ -13,3 +13,6 @@ You have n number of locked boxes in front of you. Each box is numbered sequenti
     The first box boxes[0] is unlocked
     Return True if all boxes can be opened, else return False
 ```
+
+## Algorithmn
+
