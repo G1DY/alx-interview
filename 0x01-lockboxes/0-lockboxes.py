@@ -4,18 +4,16 @@
 
 def canUnlockAll(boxes):
     """determines if all boxes can be opened"""
-    def depthFirstSearch(boxIndex, keys):
-        """A key with the same number as box opens the box"""
-        visited[boxIndex] = True
-
-        for key in boxes[boxIndex]:
-            if not visited[key]:
-                keys.add(key)
-                depthFirstSearch(key, keys)
-
-    num_boxes = len(boxes)
-    visited = [False] * num_boxes
-    keys = set()
-
-    depthFirstSearch(0, keys)
-    return all(visited)
+    keys = set([0] + boxes[0])
+    locked = set()
+    for box in boxes:
+        ibox = boxes.index(box)
+        if ibox not in keys:
+            if max(keys) > ibox:
+                locked.add(ibox)
+                continue
+        keys |= set(box)
+    for key in locked:
+        if key in keys:
+            keys |= set(boxes[key])
+    return not bool(locked - keys)
