@@ -16,7 +16,7 @@ status codes should be printed in ascending order
 import sys
 
 
-def print_code_fsize(codes, file_size):
+def print_msg(codes, file_size):
     print("File size: {}".format(file_size))
     for key, val in sorted(codes.items()):
         if val != 0:
@@ -52,8 +52,8 @@ try:
                     codes[code] += 1
 
             if (count_lines == 10):
-                print_code_fsize(codes, file_size)
+                print_msg(codes, file_size)
                 count_lines = 0
 
 finally:
-    print_code_fsize(codes, file_size)
+    print_msg(codes, file_size)
