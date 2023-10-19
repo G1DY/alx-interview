@@ -22,6 +22,7 @@ def print_msg(codes, file_size):
         if val != 0:
             print("{}: {}".format(key, val))
 
+
 file_size = 0
 code = 0
 count_lines = 0
