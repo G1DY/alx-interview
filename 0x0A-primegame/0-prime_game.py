@@ -4,34 +4,24 @@
 
 def isWinner(x, nums):
     """Determine the winner using the Eratosthenes prime sieving algorithm"""
-    Ben = 0
-    Maria = 0
+    Ben, Maria = 0, 0
+    n = max(nums)
 
     if x < 1 or not nums:
         return None
 
-    for round in range(x):
-        playing_numbers = [num for num in range(2, nums[round] + 1)]
-        i = 0  # Renamed 'index' to 'i' for brevity
+    isPrime = [True for _ in range(1, n + 1, 1)]
+    isPrime[0] = False
+    for i, is_prime in enumerate(isPrime, 1):
+        if i == 1 or not is_prime:
+            continue
+        for j in range(i + i, n + 1, i):
+            isPrime[j - 1] = False
 
-        while i < len(playing_numbers):
-            current_prime = playing_numbers[i]
-            multiple_index = (
-                i + current_prime
-            )  # Renamed 'sieve_index' to 'multiple_index'
-
-            while multiple_index < len(playing_numbers):
-                playing_numbers.pop(multiple_index)
-                multiple_index += current_prime - 1
-
-            i += 1
-
-        prime_count = len(playing_numbers)
-        if prime_count and prime_count % 2:
-            Maria += 1
-        else:
-            Ben += 1
-
-    if Ben == Maria:
+    for _, n in zip(range(x), nums):
+        primes_count = len(list(filter(lambda x: x, isPrime[0:n])))
+        Ben += primes_count % 2 == 0
+        Maria += primes_count % 2 == 1
+    if Maria == Ben:
         return None
-    return "Ben" if Ben > Maria else "Maria"
+    return "Maria" if Maria > Ben else "Ben"
