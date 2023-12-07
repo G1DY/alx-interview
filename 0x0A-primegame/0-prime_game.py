@@ -7,6 +7,9 @@ def isWinner(x, nums):
     Ben = 0
     Maria = 0
 
+    if x < 1 or not nums:
+        return None
+
     for round in range(x):
         playing_numbers = [num for num in range(2, nums[round] + 1)]
         i = 0  # Renamed 'index' to 'i' for brevity
